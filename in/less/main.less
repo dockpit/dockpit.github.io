@@ -9,6 +9,7 @@
 @footer-height: 60px; //@sticky footer
 @font-family-sans-serif: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
 @font-family-base: @font-family-sans-serif;
+@brand-primary: @pit-blue;
 
 @pit-body-color:	white;
 @pit-blue: 			#8CD2F4;
@@ -97,6 +98,10 @@ hr {
 	.hr();
 }
 
+a {
+	text-decoration: underline;
+}
+
 html {
 	position: relative;
 	min-height: 100%;
@@ -120,6 +125,10 @@ footer {
 			padding-top: @footer-height/3;
 			color: darken(@pit-lgrey, 20%);
 	}
+}
+
+.btn {
+	text-decoration: none;
 }
 
 // ------------------------------------
@@ -213,8 +222,6 @@ section#home {
 		}
 
 	}
-
-
 
 }
 

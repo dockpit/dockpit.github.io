@@ -54,15 +54,6 @@
   				</p>
 			</div>
 
-			<script>
-				var gh = document.getElementById('btn-github');
-				var t = document.getElementById('btn-twitter');
-
-				analytics.trackLink(gh, 'Redirected to Property', { asset: 'github'})
-				analytics.trackLink(t, 'Redirected to Property', { asset: 'twitter'})
-
-			</script>
-
 		</div>
 
 
@@ -172,8 +163,29 @@ warning! service ‘users’ updated to ‘0.2.0’
 			</section>
 		
 
-	</section>
-	
+
+		<div id="callout"> <!-- jumbotron -->
+
+			<div> <!-- column -->
+			<p>dockpit is still in early development but is already <a id="link-open-sourced" href="">open sourced</a> under the Mozilla Public License (version 2.0).</p>
+
+			<p>We are still looking for developers who would like to <b>test-drive</b> the early version of the software, if you're interested contact us at <a id="link-email-team" href="mailto:team@dockpit.io">team@dockpit.io</a></p>
+			</div>
+		</div>
+
+		<script>
+			var e = document.getElementById('link-email-team');
+			var ghl = document.getElementById('link-open-sourced');
+			var gh = document.getElementById('btn-github');
+			var t = document.getElementById('btn-twitter');
+
+			analytics.trackLink(e, 'Open email link', { address: 'team@dockpit.io', subject: 'test-drive early version'})
+			analytics.trackLink(ghl, 'Redirected to Property', { asset: 'github'})
+			analytics.trackLink(gh, 'Redirected to Property', { asset: 'github'})
+			analytics.trackLink(t, 'Redirected to Property', { asset: 'twitter'})
+		</script>
+
+	</section>	
 
 	</main>
 
