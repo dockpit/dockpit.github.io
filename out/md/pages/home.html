@@ -91,7 +91,9 @@
 					</article>
 
 				<article class="feature-example">
-					
+<pre>$> <b>pit mock</b>
+ - users [1.1.0] mocked @ 192.168.1.10
+ - orders [0.2.0] mocked @ 192.168.1.11</pre>
 				</article>
 
 				</div>
@@ -106,7 +108,11 @@
 					</article>
 
 				<article class="feature-example">
-					
+<pre>$> <b>pit test</b>
+ - address_list/”return 200” - OK
+ - address_create/”redirect to index”- OK
+ - address_create/”fail on duplicate” - OK
+   All passed took 150ms</pre>
 				</article>
 
 				</div>
@@ -121,7 +127,9 @@
 					</article>
 
 				<article class="feature-example">
-					
+<pre>$> <b>pit changelog</b>
+22-09-2014 0.1.11 -&gt; 0.2.0
+ -breaking change in “list_addresses&#39;</pre>
 				</article>
 
 				</div>
@@ -136,7 +144,9 @@
 					</article>
 
 				<article class="feature-example">
-					
+<pre>$> <b>pit test</b>
+warning! service ‘users’ updated to ‘0.2.0’
+ - review address_list/”return per user”</pre>
 				</article>
 
 				</div>
@@ -151,7 +161,11 @@
 					</article>
 
 				<article class="feature-example">
-					
+<pre>$> <b>pit blueprint</b>
+# GET /message
++ Response 200 (text/plain)
+
+   Hello World!</pre>
 				</article>
 
 				</div>

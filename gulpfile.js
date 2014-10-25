@@ -27,6 +27,12 @@ process.on("uncaughtException", function(err) {
   gutil.log(gutil.colors.red("[UNCAUGHT EXCEPTION]" + err.stack));
 });
 
+//custom filter for splitting strings
+swig.setFilter('split', function (input) {
+  return input.split(",")
+});
+
+
 /**
  * =============================================
  * Configuration
