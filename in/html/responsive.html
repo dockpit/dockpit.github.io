@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<body class="responsive">
+	<header>
+		<nav role="navigation">
+			<a id ="adm-logo" href="#">Adminibar</a>
+
+			<div id="account-settings">
+				<a role="navigation" href="/ui">Sign up</a>
+				<a role="navigation" id="btn-login" href="/ui">Login</a>
+			</div>
+		</nav>
+	</header>
+
+	<main>
+		{% block content %}{% endblock %}
+	</main>
+
+	<footer>
+		<div> Copyright © 2014 StepShape</div>
+	</footer>
+</body>
+{% endblock %}
