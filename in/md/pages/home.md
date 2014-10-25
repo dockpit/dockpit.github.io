@@ -1,6 +1,6 @@
 ---
 title: Home
-callout: it takes time...
-tagline: Adminibar provides your company with detailed time based analytics of your software development process.
+callout: dockpit
+tagline: turbo-charge your microservice development using docker
 template: responsive_home.html
 ---
