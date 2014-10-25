@@ -39,11 +39,10 @@ var outPath = path.join(__dirname, "out")
 
 //collection config
 var colls = {
-  customers: {
-    pattern: "md/customers/*.md"
-  },
   features: {
-    pattern: "md/features/*.md"
+    pattern: "md/features/*.md",
+    sortBy: 'priority',
+    reverse: true
   },
   pages: {
     pattern: "md/pages/*.md"

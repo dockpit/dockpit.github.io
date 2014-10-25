@@ -39,7 +39,7 @@
 		</div>
 
 
-		<section id="spec">
+		<section class="feature" id="spec">
 			<div>
 				<article class="feature-text">
 					<h2>
@@ -50,9 +50,25 @@
 				<article class="feature-example">
 					<script src="https://gist.github.com/advanderveer/5dde44f117c70d2ad39b.js"></script>
 				</article>
-
 			</div>
 		</section>
+
+
+		{% for f in collections.features %}
+			<section class="feature" id="{{f.slug}}">
+				<div>
+
+					<article class="feature-text">
+						<h2>{{ f.contents|safe }}</h2>
+					</article>
+
+				<article class="feature-example">
+					
+				</article>
+
+				</div>
+			</section>
+		{% endfor %}
 
 	</section>
 	
