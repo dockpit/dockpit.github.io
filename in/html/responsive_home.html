@@ -11,12 +11,49 @@
 				<h1>{{ callout }}</h1>
 				<p>{{ tagline }}</p>
   				<p>
-  					<a id="btn-learn-more" role="button" href="https://twitter.com/dockpit">twitter <i class="fa fa-twitter"></i></a>
-  					<a id="btn-get-started" role="button" href="https://github.com/dockpit/pit">github <i class="fa fa-github"></i></a>
+  					<a 
+  						id="btn-twitter" 
+  						role="button" 
+  						href="https://twitter.com/dockpit">
+  							twitter <i class="fa fa-twitter"></i>
+  					</a>
+  					
+  					<a 
+  						id="btn-github" 
+  						role="button" 
+  						href="https://github.com/dockpit/pit">
+  							github <i class="fa fa-github"></i>
+  					</a>
   				</p>
 			</div>
 
+			<script>
+				var gh = document.getElementById('btn-github');
+				var t = document.getElementById('btn-twitter');
+
+				analytics.trackLink(gh, 'Redirected to Property', { asset: 'github'})
+				analytics.trackLink(t, 'Redirected to Property', { asset: 'twitter'})
+
+			</script>
+
 		</div>
+
+
+		<section id="spec">
+			<div>
+				<article class="feature-text">
+					<h2>
+					Quickly <b>describe the API and dependencies</b> of you service just by writing simple black-box test cases.
+					</h2>
+				</article>
+
+				<article class="feature-example">
+					<script src="https://gist.github.com/advanderveer/5dde44f117c70d2ad39b.js"></script>
+				</article>
+
+			</div>
+		</section>
+
 	</section>
 	
 {% endblock %}

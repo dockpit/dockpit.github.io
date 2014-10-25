@@ -171,13 +171,34 @@ section#home {
 		
 	}
 
-	#btn-get-started:extend(.btn, .btn-primary, .hidden-xs) {
+	#btn-github:extend(.btn, .btn-primary, .hidden-xs) {
 		.btn-primary();
 		margin-left: 5px;
 	}
 
-	#btn-learn-more:extend(.btn, .btn-default) {
+	#btn-twitter:extend(.btn, .btn-default) {
 		.btn-info();
+	}
+
+	section#spec:extend(.container) {
+
+		&> div {
+			.make-row();
+		}
+
+		article.feature-text{
+			.make-sm-column(6);
+			.make-lg-column(6);
+			.make-md-column(6);
+			h2{font-weight: lighter;}
+		}
+
+		article.feature-example{
+			.make-sm-column(6);
+			.make-lg-column(6);
+			.make-md-column(6);
+		}
+
 	}
 
 	section#features:extend(.container) {
