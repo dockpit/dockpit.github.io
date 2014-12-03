@@ -35,8 +35,9 @@
 		<div id="callout"> <!-- jumbotron -->
 
 			<div> <!-- column -->
+				<img src="out/img/logo.png">	
 				<h1>dockpit</h1>
-				<p>turbo-charge your microservice development using docker</p>
+				<p>Blueprint your Docker container by writing examples</p>
   				<p>
   					<a 
   						id="btn-twitter" 
@@ -56,29 +57,17 @@
 
 		</div>
 
-
-		<section class="feature" id="spec">
-			<div>
-				<article class="feature-text">
-					<h2>
-					Quickly <b>describe the API and dependencies</b> of you service just by writing simple black-box test cases.
-					</h2>
-				</article>
-
-				<article class="feature-example">
-					<script src="https://gist.github.com/advanderveer/5dde44f117c70d2ad39b.js"></script>
-				</article>
-			</div>
-		</section>
+		<h2 class="hr"><span>Features</span></h2>
 
 
+		<!-- list each feature -->
 		
 			<section class="feature" id="isolation">
 				<div>
 
 					<article class="feature-text">
-						<h2><p><strong>Develop a single service in isolation</strong> by mocking all dependencies and set up the addresses as environment variables with a single command. </p>
-</h2>
+						<h3><p><strong>Develop a single service in isolation</strong> by mocking all dependencies and set up the addresses as environment variables with a single command. </p>
+</h3>
 					</article>
 
 				<article class="feature-example">
@@ -94,8 +83,8 @@
 				<div>
 
 					<article class="feature-text">
-						<h2><p>When dependencies are mocked you can <strong>run the test cases</strong> quickly and reliably to make sure the service is implemented correctly.</p>
-</h2>
+						<h3><p>When dependencies are mocked you can <strong>run the test cases</strong> quickly and reliably to make sure the service is implemented correctly.</p>
+</h3>
 					</article>
 
 				<article class="feature-example">
@@ -109,60 +98,24 @@
 				</div>
 			</section>
 		
-			<section class="feature" id="versioning">
-				<div>
 
-					<article class="feature-text">
-						<h2><p><strong>Semantic versioning</strong> of you service can be done automatically. Minor version numbers are incremented whenever breaking changes in the API occurs.</p>
-</h2>
-					</article>
+		<h2 class="hr"><span>Usage</span></h2>
 
-				<article class="feature-example">
-<pre>$> <b>pit changelog</b>
-22-09-2014 0.1.11 -&gt; 0.2.0
- -breaking change in “list_addresses&#39;</pre>
+		<section class="feature" id="spec">
+			<div>
+				<article class="feature-text">
+					<h2>
+					Quickly <b>describe the API and dependencies</b> of you service just by writing simple black-box test cases.
+					</h2>
 				</article>
 
-				</div>
-			</section>
-		
-			<section class="feature" id="informed">
-				<div>
-
-					<article class="feature-text">
-						<h2><p><strong>Get informed</strong> immediately whenever a service you depend on had a breaking change and your implementation needs to be updated.</p>
-</h2>
-					</article>
-
 				<article class="feature-example">
-<pre>$> <b>pit test</b>
-warning! service ‘users’ updated to ‘0.2.0’
- - review address_list/”return per user”</pre>
+					<script src="https://gist.github.com/advanderveer/5dde44f117c70d2ad39b.js"></script>
 				</article>
+			</div>
+		</section>
 
-				</div>
-			</section>
-		
-			<section class="feature" id="documentation">
-				<div>
-
-					<article class="feature-text">
-						<h2><p><strong>Up-to-date API documentation</strong> by generating API blueprint files with a single command</p>
-</h2>
-					</article>
-
-				<article class="feature-example">
-<pre>$> <b>pit blueprint</b>
-# GET /message
-+ Response 200 (text/plain)
-
-   Hello World!</pre>
-				</article>
-
-				</div>
-			</section>
-		
-
+		<h2 class="hr"><span>Getting Started</span></h2>
 
 		<div id="callout"> <!-- jumbotron -->
 

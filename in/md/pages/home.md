@@ -1,6 +1,6 @@
 ---
 title: Home
 callout: dockpit
-tagline: turbo-charge your microservice development using docker
+tagline: Blueprint your Docker container by writing examples
 template: responsive_home.html
 ---

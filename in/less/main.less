@@ -11,6 +11,9 @@
 @font-family-base: @font-family-sans-serif;
 @brand-primary: @pit-blue;
 
+@pit-logo-width: 120px;
+@pit-hr-color: #CCC;
+
 @pit-body-color:	white;
 @pit-blue: 			#8CD2F4;
 @pit-dblue:			darken(@pit-blue, 20%);
@@ -30,7 +33,6 @@
 	color: darken(@pit-lgrey, 5%);
 	span {
 		background-color: @pit-body-color;
-		font-family: @font-family-serif;
 		letter-spacing: 1px;
 		font-size: 0.8em;
 		position: relative;
@@ -163,11 +165,16 @@ section#home {
 				width: 50%;
 			}
 
+			img {
+				width: @pit-logo-width;
+				position: absolute;
+			}
+
 			h1 {
-				margin-bottom: 0;
-				@media (min-width: @screen-sm-min) {
-					font-size: 2.5em;					
-				}
+				margin-top: @pit-logo-width - 84px;
+				margin-left: @pit-logo-width+10px;
+				margin-bottom: @pit-logo-width - 60px;
+				font-size: 3em;
 			}
 
 			p {
@@ -180,7 +187,15 @@ section#home {
 		
 	}
 
-	#btn-github:extend(.btn, .btn-primary, .hidden-xs) {
+	h2.hr {
+		font-weight: lighter;
+		.hr();
+		span{
+			top: -1em;
+		}
+	}
+
+	#btn-github:extend(.btn, .btn-primary) {
 		.btn-primary();
 		margin-left: 5px;
 	}
@@ -206,7 +221,10 @@ section#home {
 			.make-sm-column(6);
 			.make-lg-column(6);
 			.make-md-column(6);
-			h2{font-weight: lighter;}
+			h3{
+				font-size: 1.5em;
+				font-weight: lighter;
+			}
 		}
 
 		article.feature-example{

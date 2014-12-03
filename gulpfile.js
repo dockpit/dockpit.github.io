@@ -24,7 +24,7 @@ var swig   = require("swig")
 //helper for capturing final uncaught errors
 process.on("uncaughtException", function(err) {
   "use strict";
-  gutil.log(gutil.colors.red("[UNCAUGHT EXCEPTION]" + err.stack));
+  gutil.log(gutil.colors.red("[UNCAUGHT EXCEPTION]" + err));
 });
 
 //custom filter for splitting strings

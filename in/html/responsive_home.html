@@ -8,6 +8,7 @@
 		<div id="callout"> <!-- jumbotron -->
 
 			<div> <!-- column -->
+				<img src="out/img/logo.png">	
 				<h1>{{ callout }}</h1>
 				<p>{{ tagline }}</p>
   				<p>
@@ -29,6 +30,28 @@
 
 		</div>
 
+		<h2 class="hr"><span>Features</span></h2>
+
+
+		<!-- list each feature -->
+		{% for f in collections.features %}
+			<section class="feature" id="{{f.slug}}">
+				<div>
+
+					<article class="feature-text">
+						<h3>{{ f.contents|safe }}</h3>
+					</article>
+
+				<article class="feature-example">
+<pre>$> <b>{{f.command}}</b>{% for o in f.output|split %}
+{{o}}{% endfor %}</pre>
+				</article>
+
+				</div>
+			</section>
+		{% endfor %}
+
+		<h2 class="hr"><span>Usage</span></h2>
 
 		<section class="feature" id="spec">
 			<div>
@@ -44,24 +67,7 @@
 			</div>
 		</section>
 
-
-		{% for f in collections.features %}
-			<section class="feature" id="{{f.slug}}">
-				<div>
-
-					<article class="feature-text">
-						<h2>{{ f.contents|safe }}</h2>
-					</article>
-
-				<article class="feature-example">
-<pre>$> <b>{{f.command}}</b>{% for o in f.output|split %}
-{{o}}{% endfor %}</pre>
-				</article>
-
-				</div>
-			</section>
-		{% endfor %}
-
+		<h2 class="hr"><span>Getting Started</span></h2>
 
 		<div id="callout"> <!-- jumbotron -->
 
