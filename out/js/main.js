@@ -23,14 +23,19 @@ dp.directive('exampleViewer', function() {
             document.body.appendChild(script);
         }
 
-        $scope.loadFile = function(path) {
+        $scope.loadFile = function(path, $itemEl) {
           var el = document.getElementById("ex-file-view")
+          var $el = angular.element(el)
           
           //empty reveils loader
-          angular.element(el).empty()
+          $el.empty()
+          
+          //gistId should be in the data el
+          var gistId = $itemEl.attr('data-gist')
 
-          //load gist while empty
-          $scope.loadGist(el, "1b0a563091af2b0b9b0e")
+          //load gist while empty?
+          $scope.loadGist(el, gistId)  
+     
         }
 
       },
@@ -48,7 +53,7 @@ dp.directive('exampleViewer', function() {
 
               //add onclick
               el.bind('click', function(ev){
-                scope.loadFile(path + el.text())
+                scope.loadFile(path + el.text(), el)
               })
 
             } else {
