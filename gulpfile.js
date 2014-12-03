@@ -74,6 +74,7 @@ gulp.task("watch", function(){
     "in/html/*", 
     "in/html/**/*.html",
     "in/css/*.css", 
+    "in/js/*.js", 
   ], ["build"]);
 });
 

@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html lang="en">
+<html lang="en" ng-app="dp">
 	<head>
 	  <meta charset="utf-8">
 
@@ -24,6 +24,9 @@
 		  window.analytics.load("R8U1DJFVye");
 		  window.analytics.page();
 		</script>
+
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+		<script type="text/javascript" src="out/js/main.js"></script>
 	</head>
 
 	
@@ -101,19 +104,95 @@
 
 		<h2 class="hr"><span>Usage</span></h2>
 
-		<section class="feature" id="spec">
-			<div>
-				<article class="feature-text">
-					<h2>
-					Quickly <b>describe the API and dependencies</b> of you service just by writing simple black-box test cases.
-					</h2>
-				</article>
+		<div id="example-container" example-viewer> <!-- jumbotron -->
+			<div class="window">
 
-				<article class="feature-example">
-					<script src="https://gist.github.com/advanderveer/5dde44f117c70d2ad39b.js"></script>
-				</article>
-			</div>
-		</section>
+			  <div class="top">
+			    <div class="panel">
+			      <span class="first"></span>
+			      <span class="second"></span>
+			      <span class="third"></span>
+			    </div>
+			  </div>
+			  
+			  <div class="inside">
+					<ol class="file-tree">
+
+
+						<li>
+							<label for="b">.blueprint</label><input type="checkbox" id="b"> 
+							<ol>
+								<li>
+									<label for="be">examples</label><input type="checkbox" id="be"> 
+									<ol>
+										<li>
+											<label for="beusers">- users</label><input type="checkbox" id="beusers"> 
+											<ol>
+												<li>
+													<label for="beusersl">'list 2 users'</label> <input type="checkbox" id="beusersl"> 
+													<ol>
+														<li class="file"><a>given</a></li>
+														<li class="file"><a>when</a></li>
+														<li class="file"><a>then</a></li>
+														<li class="file"><a>while</a></li>
+													</ol>
+												</li>
+		
+												<li>
+													<label for="beusersp">- projects</label><input type="checkbox" id="beusersp"> 
+													<ol>
+														<li>
+															<label for="beuserspl">'list all users projects'</label> <input type="checkbox" id="beuserspl"> 
+															<ol>
+																<li class="file"><a>given</a></li>
+																<li class="file"><a>when</a></li>
+																<li class="file"><a>then</a></li>
+																<li class="file"><a>while</a></li>
+															</ol>
+														</li>
+													</ol>
+												</li>
+											</ol>
+										</li>
+									</ol>
+								</li>
+								<li>
+									<label for="bs">states</label><input type="checkbox" id="bs"> 
+									<ol>
+										<li>
+											<label for="bsmysql">mysql</label><input type="checkbox" id="bsmysql"> 
+											<ol>
+												<li>
+													<label for="bsmysqlsu">'a single user'</label> <input type="checkbox" id="bsmysqlsu"> 
+													<ol>
+														<li class="file"><a>Dockerfile</a></li>
+													</ol>
+												</li>
+												<li>
+													<label for="bsmysqldu">'two users one project'</label> <input type="checkbox" id="bsmysqldu"> 
+													<ol>
+														<li class="file"><a>Dockerfile</a></li>
+													</ol>
+												</li>
+											</ol>
+										</li>
+									</ol>
+								</li>
+							</ol>
+						</li>
+						<li class="file"><a>dockpit.json</a></li>
+
+					</ol>
+			  		<div id="ex-file-view" class="file-contents">
+						<script src="https://gist.github.com/advanderveer/5dde44f117c70d2ad39b.js"></script>
+
+			  		</div>
+			  </div>
+
+			</div>  
+		</div>
+
+
 
 		<h2 class="hr"><span>Getting Started</span></h2>
 
