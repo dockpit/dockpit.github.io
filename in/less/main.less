@@ -194,7 +194,27 @@ section#home {
 	//showing examples
 	//@from http://codepen.io/ozer/pen/ckwyd
 	#example-container:extend(.jumbotron) {
-		background-color: transparent;
+		background-color: transparent;		
+
+		//contains folder/file explanations
+		div#ex-explanation-panel {
+			
+			position: absolute;
+			top: 0;
+			left: @pit-ex-window-width * @pit-ex-tree-file-ratio;
+			right: 0;
+
+			.expl-panel-content {
+				border: 1px solid black;
+				padding: 0 20px 0 20px;
+				opacity: 0.9;
+				min-height: 200px;
+				color: @pit-lgrey;
+				margin: 10px;
+				background-color: @pit-mgrey;
+			}
+
+		}
 
 		//contains file content
 		div.file-contents {
@@ -304,6 +324,7 @@ section#home {
 			width: @pit-ex-window-width;
 
 			.inside {
+			  position: relative; //explanation window is absolute relative to this
 			  background:#fff;
 			  overflow:hidden;
 			}

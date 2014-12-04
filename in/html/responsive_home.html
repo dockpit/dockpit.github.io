@@ -56,6 +56,16 @@
 		<div id="example-container" example-viewer> <!-- jumbotron -->
 			<div class="window">
 
+			  <script>
+			  	window.explanations = {
+			  	{% for expl in collections.explanations %}
+			  		"{{ expl.file }}": {{ JSON.stringify(expl) }},
+			  	{% endfor %}
+			  	};
+
+			  	console.log(window.explanations)
+			  </script>
+
 			  <div class="top">
 			    <div class="panel">
 			      <span class="first"></span>
@@ -69,7 +79,7 @@
 
 
 						<li>
-							<label for="b">.blueprint</label><input type="checkbox" id="b"> 
+							<label for="b">.manifest</label><input type="checkbox" id="b"> 
 							<ol>
 								<li>
 									<label for="be">examples</label><input type="checkbox" id="be"> 
@@ -80,10 +90,10 @@
 												<li>
 													<label for="beusersl">'list 2 users'</label> <input type="checkbox" id="beusersl"> 
 													<ol>
-														<li class="file"><a>given</a></li>
-														<li class="file"><a>when</a></li>
-														<li class="file"><a>then</a></li>
-														<li class="file"><a>while</a></li>
+														<li data-gist="ae223ac90d95820d11a6" class="file"><a>given</a></li>
+														<li data-gist="7abc647e53d0c72f9809" class="file"><a>when</a></li>
+														<li data-gist="d1ed565d5b42cf0c71d0" class="file"><a>then</a></li>
+														<li data-gist="0dbaa3510f85e02bdbed" class="file"><a>while</a></li>
 													</ol>
 												</li>
 		
@@ -93,10 +103,10 @@
 														<li>
 															<label for="beuserspl">'list all users projects'</label> <input type="checkbox" id="beuserspl"> 
 															<ol>
-																<li class="file"><a>given</a></li>
-																<li class="file"><a>when</a></li>
-																<li class="file"><a>then</a></li>
-																<li class="file"><a>while</a></li>
+																<li data-gist="3fc42fb03be284abaac3" class="file"><a>given</a></li>
+																<li data-gist="5e328d733f3975327905" class="file"><a>when</a></li>
+																<li data-gist="38085082f1f40b5e1fa6" class="file"><a>then</a></li>
+																<li data-gist="ef9fdd172c9ed2433bc6" class="file"><a>while</a></li>
 															</ol>
 														</li>
 													</ol>
@@ -114,13 +124,13 @@
 												<li>
 													<label for="bsmysqlsu">'a single user'</label> <input type="checkbox" id="bsmysqlsu"> 
 													<ol>
-														<li class="file"><a>Dockerfile</a></li>
+														<li data-gist="cdb5df67028efa281d6f" class="file"><a>Dockerfile</a></li>
 													</ol>
 												</li>
 												<li>
 													<label for="bsmysqldu">'two users one project'</label> <input type="checkbox" id="bsmysqldu"> 
 													<ol>
-														<li class="file"><a>Dockerfile</a></li>
+														<li data-gist="f4191302dee4ead7c782" class="file"><a>Dockerfile</a></li>
 													</ol>
 												</li>
 											</ol>
@@ -129,13 +139,16 @@
 								</li>
 							</ol>
 						</li>
-						<li data-gist="1b0a563091af2b0b9b0e" class="file"><a>dockpit.json</a></li>
+						<li data-gist="4822cbc81ef5871cbd05" class="file"><a>dockpit.json</a></li>
 
 					</ol>
 			  		<div id="ex-file-view" class="file-contents">
-						<script src="https://gist.github.com/advanderveer/5dde44f117c70d2ad39b.js"></script>
-
+						<script src="https://gist.github.com/advanderveer/440aa885fe3a57d4303c.js"></script>
 			  		</div>
+
+					<div ng-if="explanation.show" id="ex-explanation-panel" ng-cloak>
+						<div class="expl-panel-content" ng-bind-html="explanation.text">						
+					</div>
 			  </div>
 
 			</div>  

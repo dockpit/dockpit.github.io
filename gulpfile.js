@@ -45,6 +45,9 @@ var outPath = path.join(__dirname, "out")
 
 //collection config
 var colls = {
+  explanations: {
+    pattern: "md/explanations/*.md",
+  },
   features: {
     pattern: "md/features/*.md",
     sortBy: 'priority',
