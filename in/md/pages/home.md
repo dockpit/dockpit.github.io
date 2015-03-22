@@ -1,6 +1,6 @@
 ---
 title: Home
-callout: dockpit
-tagline: A command line tool for (micro)service developers that allows them to define container functionality by writing examples and testing against them
+callout: Dockpit
+tagline: Painless isolation for your (micro)service development process
 template: responsive_home.html
 ---

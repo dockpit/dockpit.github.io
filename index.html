@@ -39,8 +39,8 @@
 
 			<div> <!-- column -->
 				<img src="out/img/logo.png">	
-				<h1>dockpit</h1>
-				<p>A command line tool for (micro)service developers that allows them to define container functionality by writing examples and testing against them</p>
+				<h1>Dockpit</h1>
+				<p>Painless isolation for your (micro)service development process</p>
   				<p>
   					<a 
   						id="btn-twitter" 
@@ -65,154 +65,52 @@
 
 		<!-- list each feature -->
 		
-			<section class="feature" id="isolation">
+			<section class="feature" id="ui">
 				<div>
 
 					<article class="feature-text">
-						<h3><p><strong>Develop a single service in isolation</strong> by mocking all dependencies and set up the addresses as environment variables with a single command. </p>
+						<h3><p>Comes with a minimal web UI to set up dependencies in predictive states and a CLI to quickly switch between them </p>
 </h3>
 					</article>
 
 				<article class="feature-example">
-<pre>$> <b>pit mock</b>
- - users [1.1.0] mocked @ 192.168.1.10
- - orders [0.2.0] mocked @ 192.168.1.11</pre>
+<pre>$> <b>pit start</b>
+Dockpit Web UI Running at http://[::]:3838 (Esc to exit)
+Docker Host: tcp://192.168.59.103:2376
+Current Isolation: none
+
+Available Isolations:
+  * no users (8)               
+  - one user and a project (22)</pre>
 				</article>
 
 				</div>
 			</section>
 		
-			<section class="feature" id="testing">
+			<section class="feature" id="size">
 				<div>
 
 					<article class="feature-text">
-						<h3><p>When dependencies are mocked you can <strong>run the test cases</strong> quickly and reliably to make sure the service is implemented correctly.</p>
+						<h3><p>All packed in a single <strong>8mb binary</strong> written, in Go. It uses Docker to make each isolation predictable and portable.</p>
 </h3>
 					</article>
 
 				<article class="feature-example">
-<pre>$> <b>pit test</b>
- - address_list/”return 200” - OK
- - address_create/”redirect to index”- OK
- - address_create/”fail on duplicate” - OK
-   All passed took 150ms</pre>
+<pre>$> <b>go get github.com/dockpit/pit</b>
+</pre>
 				</article>
 
 				</div>
 			</section>
 		
 
-		<h2 class="hr"><span>Usage</span></h2>
-
-		<div id="example-container" example-viewer> <!-- jumbotron -->
-			<div class="window">
-
-			  <script>
-			  	window.explanations = {
-			  	
-			  	};
-
-			  	console.log(window.explanations)
-			  </script>
-
-			  <div class="top">
-			    <div class="panel">
-			      <span class="first"></span>
-			      <span class="second"></span>
-			      <span class="third"></span>
-			    </div>
-			  </div>
-			  
-			  <div class="inside">
-					<ol class="file-tree">
-
-
-						<li>
-							<label for="b">.manifest</label><input type="checkbox" id="b"> 
-							<ol>
-								<li>
-									<label for="be">examples</label><input type="checkbox" id="be"> 
-									<ol>
-										<li>
-											<label for="beusers">- users</label><input type="checkbox" id="beusers"> 
-											<ol>
-												<li>
-													<label for="beusersl">'list 2 users'</label> <input type="checkbox" id="beusersl"> 
-													<ol>
-														<li data-gist="ae223ac90d95820d11a6" class="file"><a>given</a></li>
-														<li data-gist="7abc647e53d0c72f9809" class="file"><a>when</a></li>
-														<li data-gist="d1ed565d5b42cf0c71d0" class="file"><a>then</a></li>
-														<li data-gist="0dbaa3510f85e02bdbed" class="file"><a>while</a></li>
-													</ol>
-												</li>
-		
-												<li>
-													<label for="beusersp">- projects</label><input type="checkbox" id="beusersp"> 
-													<ol>
-														<li>
-															<label for="beuserspl">'list all users projects'</label> <input type="checkbox" id="beuserspl"> 
-															<ol>
-																<li data-gist="3fc42fb03be284abaac3" class="file"><a>given</a></li>
-																<li data-gist="5e328d733f3975327905" class="file"><a>when</a></li>
-																<li data-gist="38085082f1f40b5e1fa6" class="file"><a>then</a></li>
-																<li data-gist="ef9fdd172c9ed2433bc6" class="file"><a>while</a></li>
-															</ol>
-														</li>
-													</ol>
-												</li>
-											</ol>
-										</li>
-									</ol>
-								</li>
-								<li>
-									<label for="bs">states</label><input type="checkbox" id="bs"> 
-									<ol>
-										<li>
-											<label for="bsmysql">mysql</label><input type="checkbox" id="bsmysql"> 
-											<ol>
-												<li>
-													<label for="bsmysqlsu">'a single user'</label> <input type="checkbox" id="bsmysqlsu"> 
-													<ol>
-														<li data-gist="cdb5df67028efa281d6f" class="file"><a>Dockerfile</a></li>
-													</ol>
-												</li>
-												<li>
-													<label for="bsmysqldu">'two users one project'</label> <input type="checkbox" id="bsmysqldu"> 
-													<ol>
-														<li data-gist="f4191302dee4ead7c782" class="file"><a>Dockerfile</a></li>
-													</ol>
-												</li>
-											</ol>
-										</li>
-									</ol>
-								</li>
-							</ol>
-						</li>
-						<li data-gist="4822cbc81ef5871cbd05" class="file"><a>dockpit.json</a></li>
-
-					</ol>
-			  		<div id="ex-file-view" class="file-contents">
-						<script src="https://gist.github.com/advanderveer/440aa885fe3a57d4303c.js"></script>
-			  		</div>
-
-					<div ng-if="explanation.show" id="ex-explanation-panel" ng-cloak>
-						<div class="expl-panel-content" ng-bind-html="explanation.text">						
-					</div>
-			  </div>
-
-			</div>  
-		</div>
-
-
-
-		<h2 class="hr"><span>Getting Started</span></h2>
+		<h2 class="hr"><span>License</span></h2>
 
 		<div id="callout"> <!-- jumbotron -->
 
 			<div> <!-- column -->
 			<p>dockpit is still in early development but is already <a id="link-open-sourced" href="https://github.com/dockpit/pit">open sourced</a> under the Mozilla Public License (version 2.0).</p>
 
-			<p>We are still looking for developers who would like to <b>test-drive</b> the early version of the software, if you're interested contact us at <a id="link-email-team" href="mailto:team@dockpit.io">team@dockpit.io</a></p>
 			</div>
 		</div>
 
