@@ -13,10 +13,10 @@
 				<p>{{ tagline }}</p>
   				<p>
   					<a 
-  						id="btn-twitter" 
+  						id="btn-download" class="btn-download" 
   						role="button" 
-  						href="https://twitter.com/dockpit">
-  							twitter <i class="fa fa-twitter"></i>
+  						href="download.html">
+  							download <i class="fa fa-download"></i>
   					</a>
   					
   					<a 
@@ -56,7 +56,16 @@
 		<div id="callout"> <!-- jumbotron -->
 
 			<div> <!-- column -->
-			<p>dockpit is still in early development but is already <a id="link-open-sourced" href="https://github.com/dockpit/pit">open sourced</a> under the Mozilla Public License (version 2.0).</p>
+			
+				<p>Completely free and open-sourced under the <a id="link-open-sourced" href="https://github.com/dockpit/pit">open sourced</a> under the Mozilla Public License (version 2.0).</p>
+
+				<a 
+					id="btn-download-bottom" class="btn-download" 
+					role="button" 
+					href="download.html">
+						download <i class="fa fa-download"></i>
+				</a>
+  					
 
 			</div>
 		</div>
@@ -65,12 +74,14 @@
 			var e = document.getElementById('link-email-team');
 			var ghl = document.getElementById('link-open-sourced');
 			var gh = document.getElementById('btn-github');
-			var t = document.getElementById('btn-twitter');
+			var dl = document.getElementById('btn-download');
+			var dlb = document.getElementById('btn-download-bottom');
 
 			analytics.trackLink(e, 'Open email link', { address: 'team@dockpit.io', subject: 'test-drive early version'})
 			analytics.trackLink(ghl, 'Redirected to Property', { asset: 'github'})
 			analytics.trackLink(gh, 'Redirected to Property', { asset: 'github'})
-			analytics.trackLink(t, 'Redirected to Property', { asset: 'twitter'})
+			analytics.trackLink(dl, 'Redirected to download.html', { asset: 'download.html'})
+			analytics.trackLink(dlb, 'Redirected to download.html bottom', { asset: 'download.html'})
 		</script>
 
 	</section>	

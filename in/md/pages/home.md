@@ -1,6 +1,6 @@
 ---
-title: Home
+title: Dockpit
 callout: Dockpit
-tagline: Painless isolation for your (micro)service development process
+tagline: Because handling (micro)service dependencies during development is a pain.
 template: responsive_home.html
 ---

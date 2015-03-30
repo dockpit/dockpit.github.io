@@ -4,7 +4,7 @@
 	<head>
 	  <meta charset="utf-8">
 
-	  <title>Home | dockpit.io</title>
+	  <title>Home | Dockpit</title>
 	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	  <meta name="description" content="dockpit.io">
@@ -40,13 +40,13 @@
 			<div> <!-- column -->
 				<img src="out/img/logo.png">	
 				<h1>Dockpit</h1>
-				<p>Painless isolation for your (micro)service development process</p>
+				<p>Because handling (micro)service dependencies during development is a pain.</p>
   				<p>
   					<a 
-  						id="btn-twitter" 
+  						id="btn-download" class="btn-download" 
   						role="button" 
-  						href="https://twitter.com/dockpit">
-  							twitter <i class="fa fa-twitter"></i>
+  						href="download.html">
+  							download <i class="fa fa-download"></i>
   					</a>
   					
   					<a 
@@ -69,7 +69,7 @@
 				<div>
 
 					<article class="feature-text">
-						<h3><p>Comes with a minimal web UI to set up dependencies in predictive states and a CLI to quickly switch between them </p>
+						<h3><p>Rapidly <strong>configure and populate</strong> databases, message queues and service registries through a Web UI and switch between different setups from the comfort of your shell.</p>
 </h3>
 					</article>
 
@@ -87,16 +87,48 @@ Available Isolations:
 				</div>
 			</section>
 		
-			<section class="feature" id="size">
+			<section class="feature" id="conf">
 				<div>
 
 					<article class="feature-text">
-						<h3><p>All packed in a single <strong>8mb binary</strong> written, in Go. It uses Docker to make each isolation predictable and portable.</p>
+						<h3><p><strong>Share setups with you’re team members</strong> by simply commiting the Dockpit configuration file to the project’s version control.</p>
 </h3>
 					</article>
 
 				<article class="feature-example">
-<pre>$> <b>go get github.com/dockpit/pit</b>
+<pre>$> <b>git commit dockpit.db</b>
+</pre>
+				</article>
+
+				</div>
+			</section>
+		
+			<section class="feature" id="size">
+				<div>
+
+					<article class="feature-text">
+						<h3><p>Build for Docker, written in Go and compiled into a single ~10mb binary that works on <strong>OSX, Windows and Linux</strong>.</p>
+</h3>
+					</article>
+
+				<article class="feature-example">
+<pre>$> <b></b>
+</pre>
+				</article>
+
+				</div>
+			</section>
+		
+			<section class="feature" id="mock">
+				<div>
+
+					<article class="feature-text">
+						<h3><p><strong>mock the HTTP(S) services</strong> you depend on to develop your own (micro)service in isolation, reliably.</p>
+</h3>
+					</article>
+
+				<article class="feature-example">
+<pre>$> <b>wip</b>
 </pre>
 				</article>
 
@@ -109,7 +141,16 @@ Available Isolations:
 		<div id="callout"> <!-- jumbotron -->
 
 			<div> <!-- column -->
-			<p>dockpit is still in early development but is already <a id="link-open-sourced" href="https://github.com/dockpit/pit">open sourced</a> under the Mozilla Public License (version 2.0).</p>
+			
+				<p>Completely free and open-sourced under the <a id="link-open-sourced" href="https://github.com/dockpit/pit">open sourced</a> under the Mozilla Public License (version 2.0).</p>
+
+				<a 
+					id="btn-download-bottom" class="btn-download" 
+					role="button" 
+					href="download.html">
+						download <i class="fa fa-download"></i>
+				</a>
+  					
 
 			</div>
 		</div>
@@ -118,12 +159,14 @@ Available Isolations:
 			var e = document.getElementById('link-email-team');
 			var ghl = document.getElementById('link-open-sourced');
 			var gh = document.getElementById('btn-github');
-			var t = document.getElementById('btn-twitter');
+			var dl = document.getElementById('btn-download');
+			var dlb = document.getElementById('btn-download-bottom');
 
 			analytics.trackLink(e, 'Open email link', { address: 'team@dockpit.io', subject: 'test-drive early version'})
 			analytics.trackLink(ghl, 'Redirected to Property', { asset: 'github'})
 			analytics.trackLink(gh, 'Redirected to Property', { asset: 'github'})
-			analytics.trackLink(t, 'Redirected to Property', { asset: 'twitter'})
+			analytics.trackLink(dl, 'Redirected to download.html', { asset: 'download.html'})
+			analytics.trackLink(dlb, 'Redirected to download.html bottom', { asset: 'download.html'})
 		</script>
 
 	</section>	

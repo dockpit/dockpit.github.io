@@ -1,7 +1,7 @@
 ---
 slug: size
 priority: 5
-command: go get github.com/dockpit/pit
+command: ''
 output: ''
 ---
-All packed in a single __8mb binary__ written, in Go. It uses Docker to make each isolation predictable and portable.
+Build for Docker, written in Go and compiled into a single ~10mb binary that works on **OSX, Windows and Linux**.

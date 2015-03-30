@@ -11,4 +11,4 @@ output: |
     * no users (8)               
     - one user and a project (22)
 ---
-Comes with a minimal web UI to set up dependencies in predictive states and a CLI to quickly switch between them 
+Rapidly **configure and populate** databases, message queues and service registries through a Web UI and switch between different setups from the comfort of your shell.

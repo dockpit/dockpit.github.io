@@ -20,6 +20,7 @@ var lr     = require("tiny-lr")()
 var fs     = require("fs")
 var path   = require("path")
 var swig   = require("swig")
+var request = require("superagent")
 
 //helper for capturing final uncaught errors
 process.on("uncaughtException", function(err) {
@@ -52,6 +53,9 @@ var colls = {
     pattern: "md/features/*.md",
     sortBy: 'priority',
     reverse: true
+  },
+  releases: {
+    pattern: "md/release/*.md",
   },
   pages: {
     pattern: "md/pages/*.md"
@@ -121,6 +125,22 @@ gulp.task("less", function () {
     .pipe(gulp.dest(path.join(inPath, "css")));
 });
 
+gulp.task("releases", function(done) {
+  request.get("https://api.github.com/repos/dockpit/pit/releases").end(function(err, resp){
+    if (err) return done(err)
+
+    var reldir = path.join(inPath, "md", "release")
+    
+    //get latest release
+    var rel = JSON.parse(resp.text).shift()
+    rel.assets.forEach(function(a, idx){
+      fs.writeFileSync(path.join(reldir, idx+".md"), '---\nname: '+a.name+'\nlink: '+a.browser_download_url+'\n---')
+    })
+    
+    done()
+  })
+})
+
 // use metalsmith to build the site
 gulp.task("build", function(done){
   swig.invalidateCache();
@@ -129,7 +149,6 @@ gulp.task("build", function(done){
     .source(inPath)
     .destination(outPath)
     .use(ignore(["vendor/**/*"]))   
-    
     .use(collections(colls))    
     .use(markdown())    
     
@@ -151,13 +170,24 @@ gulp.task("build", function(done){
       err = fs.unlinkSync(dest)
       if (err) return done(err)
 
-      fs.link(src, dest, done)
+      fs.link(src, dest, function(){
+        // copy download file as downloads.html
+        var dest = path.join(__dirname, "download.html")
+        var src = path.join(__dirname, "out", "md", "pages", "download.html")
+
+        err = fs.unlinkSync(dest)
+        if (err) return done(err)
+
+        fs.link(src, dest, done)
+      })
+
+
     })
 
 })
 
 //default task starts dev env
-gulp.task("default", function(){
+gulp.task("default", ["releases"], function(){
   gulp.start("server:livereload");
   gulp.start("watch");
 })

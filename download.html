@@ -4,7 +4,7 @@
 	<head>
 	  <meta charset="utf-8">
 
-	  <title>{% block title %}{% endblock %} | Dockpit</title>
+	  <title>Download | Dockpit</title>
 	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	  <meta name="description" content="dockpit.io">
@@ -29,5 +29,61 @@
 		<script type="text/javascript" src="out/js/main.js"></script>
 	</head>
 
-	{% block body %}{% endblock %}
+	
+<body class="responsive">
+	<main>
+		
+<div style="border-bottom: 1px solid #CCC">
+	<a href="index.html"><img style="margin: 10px" width="60px" src="out/img/logo.png"></a>
+</div>
+<section id="download">
+
+	<div id="list">
+		<h1>Download Dockpit</h1>
+		<p>Below are all available downloads for the latest version of Dockpit. Please download the proper package for your operating system and architecture.</p>
+		<hr/>
+
+		<table id="release-table">
+			<tbody>
+				
+						<tr>
+							<td><a id="rel-asset-0" href="https://github.com/dockpit/pit/releases/download/v0.2.1/darwin_amd64_0.2.1.zip">darwin_amd64_0.2.1.zip</a></td> 
+							<script type="text/javascript">
+								analytics.trackLink(document.getElementById('rel-asset-0'), 'download darwin_amd64_0.2.1.zip', { asset: 'darwin_amd64_0.2.1.zip'})
+							</script>
+						</tr>
+				
+						<tr>
+							<td><a id="rel-asset-1" href="https://github.com/dockpit/pit/releases/download/v0.2.1/linux_amd64_0.2.1.zip">linux_amd64_0.2.1.zip</a></td> 
+							<script type="text/javascript">
+								analytics.trackLink(document.getElementById('rel-asset-1'), 'download linux_amd64_0.2.1.zip', { asset: 'linux_amd64_0.2.1.zip'})
+							</script>
+						</tr>
+				
+						<tr>
+							<td><a id="rel-asset-2" href="https://github.com/dockpit/pit/releases/download/v0.2.1/windows_amd64_0.2.1.zip">windows_amd64_0.2.1.zip</a></td> 
+							<script type="text/javascript">
+								analytics.trackLink(document.getElementById('rel-asset-2'), 'download windows_amd64_0.2.1.zip', { asset: 'windows_amd64_0.2.1.zip'})
+							</script>
+						</tr>
+				
+			</tbody>
+		</table>
+	</div>
+
+</section>
+
+<script type="text/javascript">
+console.log(analytics)
+
+</script>
+
+
+	</main>
+
+	<footer>
+		<div> Copyright © 2014 StepShape</div>
+	</footer>
+</body>
+
 </html>

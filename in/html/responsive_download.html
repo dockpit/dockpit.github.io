@@ -1,0 +1,37 @@
+{% extends 'responsive.html' %}
+
+{% block title %}Download{% endblock %}
+
+{% block content %}
+<div style="border-bottom: 1px solid #CCC">
+	<a href="index.html"><img style="margin: 10px" width="60px" src="out/img/logo.png"></a>
+</div>
+<section id="download">
+
+	<div id="list">
+		<h1>Download Dockpit</h1>
+		<p>{{text}}</p>
+		<hr/>
+
+		<table id="release-table">
+			<tbody>
+				{% for i,r in collections.releases %}
+						<tr>
+							<td><a id="rel-asset-{{i}}" href="{{r.link}}">{{r.name}}</a></td> 
+							<script type="text/javascript">
+								analytics.trackLink(document.getElementById('rel-asset-{{i}}'), 'download {{r.name}}', { asset: '{{r.name}}'})
+							</script>
+						</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+</section>
+
+<script type="text/javascript">
+console.log(analytics)
+
+</script>
+
+{% endblock %}
