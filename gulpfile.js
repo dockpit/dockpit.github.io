@@ -187,7 +187,7 @@ gulp.task("build", function(done){
 })
 
 //default task starts dev env
-gulp.task("default", ["releases"], function(){
+gulp.task("default", ["releases", "build"], function(){
   gulp.start("server:livereload");
   gulp.start("watch");
 })
