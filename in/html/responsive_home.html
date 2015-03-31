@@ -57,7 +57,7 @@
 
 			<div> <!-- column -->
 			
-				<p>Completely free and open-sourced under the <a id="link-open-sourced" href="https://github.com/dockpit/pit">open sourced</a> under the Mozilla Public License (version 2.0).</p>
+				<p>Completely free and <a id="link-open-sourced" href="https://github.com/dockpit/pit">open sourced</a> under the Mozilla Public License (version 2.0).</p>
 
 				<a 
 					id="btn-download-bottom" class="btn-download" 
@@ -71,17 +71,17 @@
 		</div>
 
 		<script>
-			var e = document.getElementById('link-email-team');
 			var ghl = document.getElementById('link-open-sourced');
 			var gh = document.getElementById('btn-github');
 			var dl = document.getElementById('btn-download');
 			var dlb = document.getElementById('btn-download-bottom');
 
-			analytics.trackLink(e, 'Open email link', { address: 'team@dockpit.io', subject: 'test-drive early version'})
-			analytics.trackLink(ghl, 'Redirected to Property', { asset: 'github'})
-			analytics.trackLink(gh, 'Redirected to Property', { asset: 'github'})
-			analytics.trackLink(dl, 'Redirected to download.html', { asset: 'download.html'})
-			analytics.trackLink(dlb, 'Redirected to download.html bottom', { asset: 'download.html'})
+			analytics.page('Landing');
+			analytics.trackLink(ghl, 'Clicked CTA - Open Sourced', {CTA: 'Visit GitHub', text: 'open sourced', location: 'bottom'})
+			analytics.trackLink(gh, 'Clicked CTA - GitHub', {CTA: 'Visit GitHub', text: 'github', location: 'callout'})
+			
+			analytics.trackLink(dl, 'Clicked CTA - Download Page', {CTA: 'Visit Downloads', text: 'download', location: 'callout'})
+			analytics.trackLink(dlb, 'Clicked CTA - Download Page', {CTA: 'Visit Downloads', text: 'download', location: 'bottom'})
 		</script>
 
 	</section>	

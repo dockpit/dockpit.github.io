@@ -19,7 +19,11 @@
 						<tr>
 							<td><a id="rel-asset-{{i}}" href="{{r.link}}">{{r.name}}</a></td> 
 							<script type="text/javascript">
-								analytics.trackLink(document.getElementById('rel-asset-{{i}}'), 'download {{r.name}}', { asset: '{{r.name}}'})
+								analytics.trackLink(document.getElementById('rel-asset-{{i}}'), 'Clicked CTA - Download Asset', { 
+									asset: '{{r.name}}',
+									text: '{{r.name}}',
+									CTA: 'Download',
+								})
 							</script>
 						</tr>
 				{% endfor %}
@@ -30,8 +34,7 @@
 </section>
 
 <script type="text/javascript">
-console.log(analytics)
-
+	analytics.page('Download');
 </script>
 
 {% endblock %}
