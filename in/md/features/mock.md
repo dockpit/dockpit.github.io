@@ -4,4 +4,4 @@ priority: 5
 command: 'wip'
 output: ''
 ---
-**mock the HTTP(S) services** you depend on to develop your own (micro)service in isolation, reliably.
+**mock the HTTP(S) APIs** you depend on and develop your own (micro)service in isolation, reliably.
