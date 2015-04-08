@@ -44,7 +44,15 @@
 
 					<td class="script">
 						<span>download, unzip and move to /usr/local/bin:</span>
-						<pre>curl -sSL {{collections.releaseDarwin[0].link}} > dockpit.zip; unzip -o dockpit.zip; mv -f pit /usr/local/bin/pit; rm dockpit.zip</pre>
+						<pre id="rel-asset-script-osx">curl -sSL {{collections.releaseDarwin[0].link}} > dockpit.zip; unzip -o dockpit.zip; mv -f pit /usr/local/bin/pit; rm dockpit.zip</pre>
+
+						<script type="text/javascript">
+							analytics.trackLink(document.getElementById('rel-asset-script-osx'), 'Clicked CTA - Download Script', {
+								text: 'curl',
+								asset: '{{collections.releaseDarwin[0].name}}',
+								CTA: 'Download',
+							})
+						</script>
 					</td>
 				</tr>
 				
@@ -72,7 +80,14 @@
 
 					<td class="script">
 						<span>download, unzip and move to /usr/local/bin:</span>
-						<pre>curl -sSL {{collections.releaseLinux[0].link}} > dockpit.zip; unzip -o dockpit.zip; mv -f pit /usr/local/bin/pit; rm dockpit.zip</pre>
+						<pre id="rel-asset-script-linxu">curl -sSL {{collections.releaseLinux[0].link}} > dockpit.zip; unzip -o dockpit.zip; mv -f pit /usr/local/bin/pit; rm dockpit.zip</pre>
+						<script type="text/javascript">
+							analytics.trackLink(document.getElementById('rel-asset-script-linxu'), 'Clicked CTA - Download Script', {
+								text: 'curl',
+								asset: '{{collections.releaseLinux[0].name}}',
+								CTA: 'Download',
+							})
+						</script>
 					</td>
 				</tr>
 

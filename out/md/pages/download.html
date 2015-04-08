@@ -68,7 +68,15 @@
 
 					<td class="script">
 						<span>download, unzip and move to /usr/local/bin:</span>
-						<pre>curl -sSL https://github.com/dockpit/pit/releases/download/v0.4.1/darwin_amd64_0.4.1.zip > dockpit.zip; unzip -o dockpit.zip; mv -f pit /usr/local/bin/pit; rm dockpit.zip</pre>
+						<pre id="rel-asset-script-osx">curl -sSL https://github.com/dockpit/pit/releases/download/v0.4.1/darwin_amd64_0.4.1.zip > dockpit.zip; unzip -o dockpit.zip; mv -f pit /usr/local/bin/pit; rm dockpit.zip</pre>
+
+						<script type="text/javascript">
+							analytics.trackLink(document.getElementById('rel-asset-script-osx'), 'Clicked CTA - Download Script', {
+								text: 'curl',
+								asset: 'darwin_amd64_0.4.1.zip',
+								CTA: 'Download',
+							})
+						</script>
 					</td>
 				</tr>
 				
@@ -94,7 +102,14 @@
 
 					<td class="script">
 						<span>download, unzip and move to /usr/local/bin:</span>
-						<pre>curl -sSL https://github.com/dockpit/pit/releases/download/v0.4.1/linux_amd64_0.4.1.zip > dockpit.zip; unzip -o dockpit.zip; mv -f pit /usr/local/bin/pit; rm dockpit.zip</pre>
+						<pre id="rel-asset-script-linxu">curl -sSL https://github.com/dockpit/pit/releases/download/v0.4.1/linux_amd64_0.4.1.zip > dockpit.zip; unzip -o dockpit.zip; mv -f pit /usr/local/bin/pit; rm dockpit.zip</pre>
+						<script type="text/javascript">
+							analytics.trackLink(document.getElementById('rel-asset-script-linxu'), 'Clicked CTA - Download Script', {
+								text: 'curl',
+								asset: 'linux_amd64_0.4.1.zip',
+								CTA: 'Download',
+							})
+						</script>
 					</td>
 				</tr>
 
