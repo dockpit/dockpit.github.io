@@ -1,5 +1,5 @@
 ---
 title: Dockpit - Downloads
 template: responsive_download.html
-text: Below are all available downloads for the latest version of Dockpit. Please download the proper package for your operating system and architecture.
+text: Dockpit is written in Go and compiled to a single ~15mb binary, below are all the available downloads for the latest version. 
 ---

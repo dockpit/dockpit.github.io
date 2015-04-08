@@ -152,13 +152,42 @@ section#download:extend(.container) {
 
 	}
 
+	.table-container:extend(.table-responsive) {
+
+	}
+
 	#release-table:extend(.table) {
+		table-layout:fixed;
+
+		td.icon {
+			width: 100px;
+		}
+
+		td.links {
+			width: 100px;
+			text-align: center;
+		}
+
+		td.script {
+			span {
+				color: #CCC;
+			}
+
+			pre:extend(pre) {}			
+		}
+
+
 		td {
 			padding: 10px;
+			padding-bottom: 40px;
+		}
+
+		h2 {
+			margin-bottom: 0;
 		}
 
 		a {
-			text-decoration: none;
+			font-size: 1.1em;
 		}
 	}
 

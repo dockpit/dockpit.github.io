@@ -10,25 +10,98 @@
 
 	<div id="list">
 		<h1>Download Dockpit</h1>
-		<p>{{text}}</p>
+		<p>{{text}} SHA-256 checksums are available 
+				{% for i,f in collections.releaseChecksums %}
+					<a id="rel-asset-checksum-{{i}}" href="{{f.link}}">here</a>
+				{%endfor%}
+		</p>
 		<hr/>
 
+		<div class="table-container">
 		<table id="release-table">
 			<tbody>
-				{% for i,r in collections.releases %}
-						<tr>
-							<td><a id="rel-asset-{{i}}" href="{{r.link}}">{{r.name}}</a></td> 
+				
+				<tr>
+					<td class="icon"><img height="100" src="out/img/osx.png"/></td>
+					<td class="links">
+					
+						<h2>OSX</h2>
+						{% for i,f in collections.releaseDarwin %}
+							{% if f.name.match(amd64) %}
+								<a id="rel-asset-osx-{{i}}" href="{{f.link}}">64-bit</a>
+							{% else %}
+								<a id="rel-asset-osx-{{i}}" href="{{f.link}}">notimplemented</a>
+							{% endif %}
 							<script type="text/javascript">
-								analytics.trackLink(document.getElementById('rel-asset-{{i}}'), 'Clicked CTA - Download Asset', { 
-									asset: '{{r.name}}',
-									text: '{{r.name}}',
+								analytics.trackLink(document.getElementById('rel-asset-osx-{{i}}'), 'Clicked CTA - Download Asset', { 
+									asset: '{{f.name}}',
+									text: '{{f.name}}',
 									CTA: 'Download',
 								})
 							</script>
-						</tr>
-				{% endfor %}
+						{% endfor %}
+					</td>
+
+					<td class="script">
+						<span>download, unzip and move to /usr/local/bin:</span>
+						<pre>curl -sSL {{collections.releaseDarwin[0].link}} > dockpit.zip; unzip -o dockpit.zip; mv -f pit /usr/local/bin/pit; rm dockpit.zip</pre>
+					</td>
+				</tr>
+				
+				
+				<tr>
+					<td class="icon"><img height="100" src="out/img/linux.png"/></td>
+					<td class="links">					
+						<h2>Linux</h2>
+						{% for i,f in collections.releaseLinux %}
+							{% if f.name.match(amd64) %}
+								<a id="rel-asset-linux-{{i}}" href="{{f.link}}">64-bit</a>
+							{% else %}
+								<a id="rel-asset-linux-{{i}}" href="{{f.link}}">notimplemented</a>
+							{% endif %}
+							
+							<script type="text/javascript">
+								analytics.trackLink(document.getElementById('rel-asset-linux-{{i}}'), 'Clicked CTA - Download Asset', { 
+									asset: '{{f.name}}',
+									text: '{{f.name}}',
+									CTA: 'Download',
+								})
+							</script>
+						{% endfor %}
+					</td>
+
+					<td class="script">
+						<span>download, unzip and move to /usr/local/bin:</span>
+						<pre>curl -sSL {{collections.releaseLinux[0].link}} > dockpit.zip; unzip -o dockpit.zip; mv -f pit /usr/local/bin/pit; rm dockpit.zip</pre>
+					</td>
+				</tr>
+
+				<tr>
+					<td class="icon"><img height="100" src="out/img/windows.png"/></td>
+					<td class="links">	
+						<h2>Windows</h2>				
+						{% for i,f in collections.releaseWindows %}
+							{% if f.name.match(amd64) %}
+								<a id="rel-asset-win-{{i}}" href="{{f.link}}">64-bit</a>
+							{% else %}
+								<a id="rel-asset-win-{{i}}" href="{{f.link}}">notimplemented</a>
+							{% endif %}
+							
+							<script type="text/javascript">
+								analytics.trackLink(document.getElementById('rel-asset-win-{{i}}'), 'Clicked CTA - Download Asset', { 
+									asset: '{{f.name}}',
+									text: '{{f.name}}',
+									CTA: 'Download',
+								})
+							</script>
+						{% endfor %}
+					</td>
+
+				</tr>
+
 			</tbody>
 		</table>
+		</div>
 	</div>
 
 </section>

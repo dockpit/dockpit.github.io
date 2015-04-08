@@ -54,8 +54,17 @@ var colls = {
     sortBy: 'priority',
     reverse: true
   },
-  releases: {
-    pattern: "md/release/*.md",
+  releaseChecksums: {
+    pattern: "md/release/checksums/*.md",
+  },
+  releaseWindows: {
+    pattern: "md/release/windows/*.md",
+  },
+  releaseDarwin: {
+    pattern: "md/release/darwin/*.md",
+  },
+  releaseLinux: {
+    pattern: "md/release/linux/*.md",
   },
   pages: {
     pattern: "md/pages/*.md"
@@ -125,16 +134,27 @@ gulp.task("less", function () {
     .pipe(gulp.dest(path.join(inPath, "css")));
 });
 
-gulp.task("releases", function(done) {
+gulp.task("release", function(done) {
   request.get("https://api.github.com/repos/dockpit/pit/releases").end(function(err, resp){
     if (err) return done(err)
 
     var reldir = path.join(inPath, "md", "release")
     
     //get latest release
-    var rel = JSON.parse(resp.text).shift()
-    rel.assets.forEach(function(a, idx){
-      fs.writeFileSync(path.join(reldir, idx+".md"), '---\nname: '+a.name+'\nlink: '+a.browser_download_url+'\n---')
+    var latest = JSON.parse(resp.text).shift()
+    latest.assets.forEach(function(a, idx){
+      if (/SHA256SUMS/.test(a.name)) {
+        fs.writeFileSync(path.join(reldir, "checksums", idx+".md"), '---\nname: '+a.name+'\nlink: '+a.browser_download_url+'\n---')
+      } else if (/darwin/.test(a.name)) {
+        //osx
+        fs.writeFileSync(path.join(reldir, "darwin", idx+".md"), '---\nname: '+a.name+'\nlink: '+a.browser_download_url+'\n---')
+      } else if (/windows/.test(a.name)) {
+        //windows
+        fs.writeFileSync(path.join(reldir, "windows", idx+".md"), '---\nname: '+a.name+'\nlink: '+a.browser_download_url+'\n---')
+      } else if (/linux/.test(a.name)) {
+        //linux
+        fs.writeFileSync(path.join(reldir, "linux", idx+".md"), '---\nname: '+a.name+'\nlink: '+a.browser_download_url+'\n---')
+      }
     })
     
     done()
@@ -185,7 +205,7 @@ gulp.task("build", function(done){
 })
 
 //default task starts dev env
-gulp.task("default", ["releases", "build"], function(){
+gulp.task("default", ["release", "build"], function(){
   gulp.start("server:livereload");
   gulp.start("watch");
 })
