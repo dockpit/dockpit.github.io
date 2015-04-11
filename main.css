@@ -1,0 +1,191 @@
+a {
+  color: #8cd2f4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Roboto', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+p,
+div {
+  font-family: 'Roboto', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+.navbar {
+  background-color: white;
+}
+.navbar .navbar-brand {
+  color: black;
+}
+footer {
+  background-color: #F6F6F6;
+  padding: 20px;
+  color: #AAA;
+  height: 60px;
+}
+html#download {
+  position: relative;
+  min-height: 100%;
+}
+html#download body {
+  margin-bottom: 60px;
+}
+html#download #download-panel {
+  width: 700px;
+}
+@media (max-width: 768px) {
+  html#download #download-panel {
+    width: 100%;
+  }
+}
+html#download #download-panel ul {
+  list-style: none;
+  padding: 0;
+}
+html#download #download-panel ul li {
+  text-align: center;
+  margin-bottom: 30px;
+}
+html#download #download-panel .links a {
+  font-size: 1.2em;
+  text-decoration: underline;
+}
+html#download #download-panel .script {
+  color: #CCC;
+  text-align: left;
+}
+html#download footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+html#homepage {
+  height: 100%;
+}
+html#homepage body {
+  height: 100%;
+}
+html#homepage body #finish {
+  text-align: center;
+  padding-bottom: 80px;
+}
+html#homepage body #finish .lead {
+  margin-top: 40px;
+}
+html#homepage body #finish .text-muted {
+  margin-top: 5px;
+  color: #CCC;
+  font-weight: 100;
+}
+html#homepage body #features {
+  color: #999999;
+  background-color: #444;
+  font-weight: 100;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+html#homepage body #features ul {
+  list-style: none;
+}
+html#homepage body #features div.img {
+  text-align: center;
+  opacity: 0.3;
+}
+html#homepage body #features div.img:hover {
+  opacity: 1;
+}
+html#homepage body #features div.text {
+  padding: 30px 30px 0 30px;
+  font-size: 1.1em;
+}
+html#homepage body #features li {
+  border-top: 1px solid #666666;
+}
+html#homepage body #features h2 {
+  text-align: center;
+  color: #666666;
+  margin-bottom: 1em;
+}
+html#homepage body #features h3 {
+  color: white;
+  font-weight: 100;
+  letter-spacing: 0.02em;
+}
+html#homepage body #what-is-it {
+  color: white;
+  text-align: center;
+  background-color: #8cd2f4;
+  padding-bottom: 80px;
+}
+html#homepage body #what-is-it h2 {
+  margin-top: 40px;
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+html#homepage body #what-is-it .note-image {
+  position: relative;
+  padding-left: 20px;
+}
+html#homepage body #what-is-it .note-image img {
+  margin-top: 30px;
+}
+@media (max-width: 768px) {
+  html#homepage body #what-is-it .note-image img {
+    max-width: 100%;
+  }
+}
+html#homepage body #what-is-it .lead {
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 100;
+  max-width: 800px;
+  letter-spacing: 0.01em;
+}
+html#homepage body #callout {
+  position: relative;
+  height: 100%;
+  min-height: 800px;
+  text-align: center;
+}
+html#homepage body #callout .logo {
+  margin-top: 80px;
+}
+html#homepage body #callout .lead {
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 20em;
+}
+html#homepage body #callout .platforms {
+  list-style: none;
+  padding: 0;
+}
+html#homepage body #callout .platforms li {
+  display: inline-block;
+  margin: 5px;
+}
+html#homepage body #callout .platforms img {
+  height: 30px;
+}
+html#homepage body #callout .text-muted {
+  margin-top: 5px;
+  color: #CCC;
+  font-weight: 100;
+}
+@media (max-width: 768px) {
+  html#homepage body #callout {
+    height: auto;
+    min-height: 700px;
+  }
+}
+html#homepage body #ui-screenshot {
+  position: absolute;
+  bottom: 0;
+}
+@media (max-width: 768px) {
+  html#homepage body #ui-screenshot img {
+    max-width: 100%;
+  }
+}
