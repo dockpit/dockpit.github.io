@@ -1,211 +1,90 @@
-/* globals __dirname, process, setTimeout */
+require("babel/register")({ extensions: [".jsx"]})
 
-//gulp deps
-var gulp        = require("gulp")
-var gutil       = require("gulp-util")
-var less        = require("gulp-less")
-var concat      = require("gulp-concat");
-var minifyCSS   = require("gulp-minify-css")
-
-//ms deps
-var ms          = require("metalsmith")
-var markdown    = require("metalsmith-markdown")
-var templates   = require("metalsmith-templates")
-var collections = require("metalsmith-collections")
-var permalinks  = require("metalsmith-permalinks")
-var ignore      = require("metalsmith-ignore")
-
-//misc deps
-var lr     = require("tiny-lr")()
-var fs     = require("fs")
-var path   = require("path")
-var swig   = require("swig")
+//dependencies
+var fs = require("fs")
+var walk = require('fs-walk');
+var path = require("path")
+var gulp = require("gulp")
+var less = require("gulp-less")
 var request = require("superagent")
+var plumber = require("gulp-plumber")
+var concat = require("gulp-concat")
+var React = require("react")
+var Immutable = require('immutable')
 
-//helper for capturing final uncaught errors
-process.on("uncaughtException", function(err) {
-  "use strict";
-  gutil.log(gutil.colors.red("[UNCAUGHT EXCEPTION]" + err));
-});
+var SEGMENT_ID = "8bvqeS1FiRo3sVVW9mZBoyzSrAmmCLXD"
 
-//custom filter for splitting strings
-swig.setFilter('split', function (input) {
-  return input.split(",")
-});
+var HTML_DOCKTYPE = "<!doctype html>"
+var HTML_CONDITIONALS = '<!--[if lt IE 9]><script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script><script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->'
+var HTML_ANALYTICS = '<script type="text/javascript">window.analytics=window.analytics||[],window.analytics.methods=["identify","group","track","page","pageview","alias","ready","on","once","off","trackLink","trackForm","trackClick","trackSubmit"],window.analytics.factory=function(t){return function(){var a=Array.prototype.slice.call(arguments);return a.unshift(t),window.analytics.push(a),window.analytics}};for(var i=0;i<window.analytics.methods.length;i++){var key=window.analytics.methods[i];window.analytics[key]=window.analytics.factory(key)}window.analytics.load=function(t){if(!document.getElementById("analytics-js")){var a=document.createElement("script");a.type="text/javascript",a.id="analytics-js",a.async=!0,a.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n)}},window.analytics.SNIPPET_VERSION="2.0.9",window.analytics.load("'+SEGMENT_ID+'");</script>'
 
-
-/**
- * =============================================
- * Configuration
- * =============================================
- */
-
-//var paths
-var inPath = path.join(__dirname, "in")
-var outPath = path.join(__dirname, "out")
-
-//collection config
-var colls = {
-  explanations: {
-    pattern: "md/explanations/*.md",
-  },
-  features: {
-    pattern: "md/features/*.md",
-    sortBy: 'priority',
-    reverse: true
-  },
-  releaseChecksums: {
-    pattern: "md/release/checksums/*.md",
-  },
-  releaseWindows: {
-    pattern: "md/release/windows/*.md",
-  },
-  releaseDarwin: {
-    pattern: "md/release/darwin/*.md",
-  },
-  releaseLinux: {
-    pattern: "md/release/linux/*.md",
-  },
-  pages: {
-    pattern: "md/pages/*.md"
-  }
-}
-
-
-/**
- * =============================================
- * Automation
- * =============================================
- */
-
-//auto build new out on changes in in
+//watch for jsx changes and rebuild
 gulp.task("watch", function(){
+  gulp.watch(["src/**/*.less"], ["less"])
+  gulp.watch(["src/**/*.jsx"], ["clear-cache", "jsx"])
+})
 
-  //compile less and combine sprite css
-  gulp.watch(["in/less/*.less"], ["less"]);
+//clear require() cache
+gulp.task("clear-cache", function(){
+  walk.walkSync('src', function(basedir, filename, stat) {
+      var pp = ""
 
-  gulp.watch([
-    "in/md/*", 
-    "in/md/**/*.md",
-    "in/html/*", 
-    "in/html/**/*.html",
-    "in/css/*.css", 
-    "in/js/*.js", 
-  ], ["build"]);
-});
+      try {
+        pp = require.resolve(path.join(__dirname, basedir, filename))
+      } catch(err) { return }
 
-/**
- * =============================================
- * Servers
- * =============================================
- */
-
-// liver reloads the browser when something in the output dir changes
-gulp.task("server:livereload", function(done){
-  lr.listen(35729, function (err) {
-    if (err) {
-      done(err);
-    }
-
-    gutil.log("Live reload server listening on: " +  gutil.colors.yellow(35729));
+      delete require.cache[pp]
   });
+})
 
-  gulp.watch(["out/**/*"], function(e){
-    gutil.log("File "+path.relative(__dirname,e.path)+ " was "+gutil.colors.yellow(e.type));
-    lr.changed({
-      body: { files: [e.path] }
-    });
-  });
-});
-
-
-/**
- * =============================================
- * Building from src (in -> out)
- * =============================================
- */
-
-// use gulp to build less and concat sprite css
-gulp.task("less", function () {
-  return gulp.src(path.join(inPath, "less", "*.less"))
-    .pipe(less())
-    .pipe(minifyCSS())
-    .pipe(concat("main.css"))
-    .pipe(gulp.dest(path.join(inPath, "css")));
-});
-
+//donwload most resent release information
 gulp.task("release", function(done) {
   request.get("https://api.github.com/repos/dockpit/pit/releases").end(function(err, resp){
     if (err) return done(err)
-
-    var reldir = path.join(inPath, "md", "release")
     
     //get latest release
     var latest = JSON.parse(resp.text).shift()
-    latest.assets.forEach(function(a, idx){
-      if (/SHA256SUMS/.test(a.name)) {
-        fs.writeFileSync(path.join(reldir, "checksums", idx+".md"), '---\nname: '+a.name+'\nlink: '+a.browser_download_url+'\n---')
-      } else if (/darwin/.test(a.name)) {
-        //osx
-        fs.writeFileSync(path.join(reldir, "darwin", idx+".md"), '---\nname: '+a.name+'\nlink: '+a.browser_download_url+'\n---')
-      } else if (/windows/.test(a.name)) {
-        //windows
-        fs.writeFileSync(path.join(reldir, "windows", idx+".md"), '---\nname: '+a.name+'\nlink: '+a.browser_download_url+'\n---')
-      } else if (/linux/.test(a.name)) {
-        //linux
-        fs.writeFileSync(path.join(reldir, "linux", idx+".md"), '---\nname: '+a.name+'\nlink: '+a.browser_download_url+'\n---')
-      }
-    })
-    
+
+    fs.writeFileSync(path.join(__dirname, "src", "json", "latest_release.json"), JSON.stringify(latest))    
     done()
   })
 })
 
-// use metalsmith to build the site
-gulp.task("build", function(done){
-  swig.invalidateCache();
+//compile less to css
+gulp.task("less", function () {
+  return gulp.src(path.join(__dirname, "src", "**", "*.less"))
+    .pipe(plumber())
+    .pipe(less())
+    .pipe(concat("main.css"))
+    .pipe(gulp.dest(__dirname));
+});
 
-  ms(__dirname)
-    .source(inPath)
-    .destination(outPath)
-    .use(ignore(["vendor/**/*"]))   
-    .use(collections(colls))    
-    .use(markdown())    
-    
-    //render items using swig
-    .use(templates({
-      engine: "swig",
-      directory: path.join(inPath, "html"),
-    }))
+//build jsx files into static html pages
+gulp.task("jsx", function() {
+  var globalProps = {
+    latestRelease: require("./src/json/latest_release.json")
+  }
 
-    //do not actually output the template files
-    .use(ignore(["html/**/*.html", "less/**/*.less"]))   
-    .build(function(err){
-      if (err) return done(err)
-      
-      // copy homepage file as index.html
-      var dest = path.join(__dirname, "index.html")
-      var src = path.join(__dirname, "out", "md", "pages", "home.html")
+  var pages = Immutable.Map({
+    index: require("./src/jsx/index_page.jsx"),
+    download: require("./src/jsx/download_page.jsx"),
+  })
 
-      err = fs.unlinkSync(dest)
-      if (err) return done(err)
+  elements = pages.map(function(component, name){
+    return React.createElement(component, globalProps)
+  })
 
-      fs.link(src, dest, function(){
-        // copy download file as downloads.html
-        var dest = path.join(__dirname, "download.html")
-        var src = path.join(__dirname, "out", "md", "pages", "download.html")
+  html = elements.map(function(el, name){
+    return React.renderToStaticMarkup(el)
+  })
 
-        err = fs.unlinkSync(dest)
-        if (err) return done(err)
+  html.forEach(function(markup, name){
+    markup = markup.replace('__CONDITIONALS__', HTML_CONDITIONALS)
+    markup = markup.replace('__ANALYTICS__', HTML_ANALYTICS)
 
-        fs.link(src, dest, done)
-      })
-    })
-
+    fs.writeFileSync(path.join(__dirname, name+".html"), HTML_DOCKTYPE+markup)
+  })
 })
 
-//default task starts dev env
-gulp.task("default", ["release", "build"], function(){
-  gulp.start("server:livereload");
-  gulp.start("watch");
-})
+gulp.task("build", ["less", "jsx"])
+gulp.task("default", ["release", "clear-cache", "build", "watch"])
