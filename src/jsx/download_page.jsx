@@ -85,7 +85,7 @@ class DownloadPage extends React.Component {
     })
 
     return <html lang="en" id="download">
-    	<Head page="Home"/>
+    	<Head page="Download"/>
     	<body>
 
             <Navbar/>
