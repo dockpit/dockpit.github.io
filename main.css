@@ -184,6 +184,9 @@ html#homepage body #ui-screenshot {
   position: absolute;
   bottom: 0;
 }
+html#homepage body #ui-screenshot img {
+  max-height: 340px;
+}
 @media (max-width: 768px) {
   html#homepage body #ui-screenshot img {
     max-width: 100%;
