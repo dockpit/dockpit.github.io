@@ -13,44 +13,44 @@ class Platform extends React.Component {
         var me = this
         return <li className="row">
             <div className="col-md-2 icon"><img height="100" src={'src/img/' + this.props.name.toLowerCase() +".png"}/></div>
-            <div className="col-md-3 links">                    
+            <div className="col-md-3 links">
                 <h2>{this.props.name}</h2>
 
                 {this.props.platformAssets.map(function(a, i){
                     return <a id={"rel-asset-link-"+me.props.name.toLowerCase()+`-`+i} key={i} href={a.get('browser_download_url')}>
                         {a.get('name').match("amd64") ? '64-bit' : '32-bit'}
 
-                        <script dangerouslySetInnerHTML={{__html: `                
+                        <script dangerouslySetInnerHTML={{__html: `
                             analytics.trackLink(document.getElementById('rel-asset-link-`+me.props.name.toLowerCase()+`-`+i+`'), 'Clicked CTA - Download Asset', {
                                 text: '`+a.get('name')+`',
                                 asset: '`+a.get('name')+`',
                                 CTA: 'Download',
                             })
-                        `}} />  
+                        `}} />
 
-                    </a>                
+                    </a>
                 })}
-                
+
             </div>
 
-            <div className="col-md-7 script">                
+            <div className="col-md-7 script">
                 {this.props.name.toLowerCase() !== "windows" ? <span>download, unzip and move to /usr/local/bin:</span> :null }
                 {this.props.name.toLowerCase() !== "windows" ? <pre id={"rel-asset-script-"+this.props.name.toLowerCase()}> curl -sSL {this.props.platformAssets.get(0).get('browser_download_url')} > dockpit.zip; unzip -o dockpit.zip; mv -f pit /usr/local/bin/pit; rm dockpit.zip</pre> : null }
             </div>
 
-            <script dangerouslySetInnerHTML={{__html: `                
+            <script dangerouslySetInnerHTML={{__html: `
                 analytics.trackLink(document.getElementById('rel-asset-script-`+this.props.name.toLowerCase()+`'), 'Clicked CTA - Download Script', {
                     text: 'curl',
                     asset: '`+this.props.platformAssets.get(0).get('name')+`',
                     CTA: 'Download',
                 })
-            `}} />            
+            `}} />
         </li>
-    }    
+    }
 }
 
-Platform.propTypes = { 
-    name: React.PropTypes.string.isRequired,   
+Platform.propTypes = {
+    name: React.PropTypes.string.isRequired,
     platformAssets: ImmutablePropTypes.listOf(
         ImmutablePropTypes.shape({
             browser_download_url: React.PropTypes.string.isRequired
@@ -64,9 +64,9 @@ class DownloadPage extends React.Component {
   render() {
 
     //organize assets
-    var assets = Immutable.fromJS(this.props.latestRelease.assets)    
+    var assets = Immutable.fromJS(this.props.latestRelease.assets)
     var platforms = Immutable.Map({
-        OSX: Immutable.List(),    
+        OSX: Immutable.List(),
         Linux: Immutable.List(),
         Windows: Immutable.List(),
     })
@@ -89,7 +89,7 @@ class DownloadPage extends React.Component {
     	<body>
 
             <Navbar/>
-			
+
             <div className="container">
                 <div id="download-panel" className="center-block">
                     <h1>Download Dockpit</h1>
@@ -103,25 +103,45 @@ class DownloadPage extends React.Component {
                             return <Platform name={name} platformAssets={p} />
                         })}
                     </ul>
+
+                    <h1>Getting Started</h1>
+                    <hr/>
+                    <p>
+                      <ol>
+                        <li>Download Dockpit</li>
+                        <li>Unzip the package and put its content in your <code>$PATH</code> (the scripts above already do this)</li>
+                        <li>
+                          Then go to the root the project you would like to isolate and run the start command
+                          <pre>
+                            cd ~/my-project<br/>
+
+                            pit start
+                          </pre>
+                        </li>
+                        <li>Follow the on-screen instructions</li>
+                      </ol>
+                    </p>
+
                 </div>
+
             </div>
 
             <Footer/>
 
 
-            <script dangerouslySetInnerHTML={{__html: `                
+            <script dangerouslySetInnerHTML={{__html: `
                 analytics.page('Download');
             `}} />
     	</body>
     </html>
   }
 }
- 
-DownloadPage.defaultProps = { 
+
+DownloadPage.defaultProps = {
     intro: "Dockpit is written in Go and compiled to a single ~15mb binary, below are all the available downloads for the latest version. SHA-256 checksums are available"
 }
 
-DownloadPage.propTypes = {    
+DownloadPage.propTypes = {
     latestRelease: React.PropTypes.shape({
       name: React.PropTypes.string,
       assets: React.PropTypes.array

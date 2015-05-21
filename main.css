@@ -56,6 +56,10 @@ html#download #download-panel .script {
   color: #CCC;
   text-align: left;
 }
+html#download ol li {
+  font-size: 1.2em;
+  margin: 20px;
+}
 html#download footer {
   position: absolute;
   bottom: 0;

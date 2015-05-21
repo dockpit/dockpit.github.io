@@ -46,7 +46,7 @@ html#download {
 
 		@media (max-width: @screen-sm-min) {
 			width: 100%;
-		}	
+		}
 
 		ul {
 			list-style: none;
@@ -72,7 +72,14 @@ html#download {
 
 	}
 
-	footer {		
+  ol {
+    li {
+      font-size: 1.2em;
+      margin: 20px;
+    }
+  }
+
+	footer {
 		position: absolute;
 		bottom: 0;
 		width: 100%;
@@ -95,7 +102,7 @@ html#homepage {
 			.lead {
 				margin-top: 40px;
 			}
-			
+
 			.text-muted {
 				margin-top: 5px;
 				color: #CCC;
@@ -112,13 +119,13 @@ html#homepage {
 			padding-top: 80px;
 			padding-bottom: 80px;
 
-			ul { 
-				list-style:  none; 
+			ul {
+				list-style:  none;
 			}
 
 			div.img {
 				text-align: center;
-				opacity: 0.3;				
+				opacity: 0.3;
 
 				&:hover {
 					opacity: 1;
@@ -126,9 +133,9 @@ html#homepage {
 			}
 			div.text {
 				padding: 30px 30px 0 30px;
-				font-size: 1.1em;				
+				font-size: 1.1em;
 			}
-			
+
 			li {
 				border-top: 1px solid @pit-subtle-on-black;
 			}
@@ -164,13 +171,13 @@ html#homepage {
 			.note-image {
 				position: relative;
 				padding-left: 20px;
-		
+
 
 				img {
 					margin-top: 30px;
 					@media (max-width: @screen-sm-min) {
 						max-width: 100%;
-					}	
+					}
 				}
 
 			}
@@ -192,7 +199,7 @@ html#homepage {
 			height: 100%;
 			min-height: 800px;
 			text-align: center;
-			
+
 			.logo {
 				margin-top: 80px;
 			}
@@ -223,7 +230,7 @@ html#homepage {
 			@media (max-width: @screen-sm-min) {
 				height: auto;
 				min-height: 700px;
-			}	
+			}
 		}
 
 		#ui-screenshot {
@@ -234,7 +241,7 @@ html#homepage {
 				max-height: 340px;
 				@media (max-width: @screen-sm-min) {
 					max-width: 100%;
-				}		
+				}
 			}
 		}
 	}
